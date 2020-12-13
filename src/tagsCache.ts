@@ -9,6 +9,7 @@ const query = gql`
     tags {
         trigger
         response
+        code
       }
   }
 `
@@ -18,6 +19,7 @@ const isRegex = (x) => /^\/.*\/$/.test(x)
 export interface Tag {
     response: string,
     trigger: string | RegExp,
+    code: string
 }
 
 
@@ -36,7 +38,8 @@ export default async function getTags(): Promise<Tag[]> {
             }
             return {
                 trigger: tag.trigger,
-                response: tag.response
+                response: tag.response,
+                code: tag.code
             }
         }) as Tag[]
 

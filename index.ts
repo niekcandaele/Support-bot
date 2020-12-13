@@ -3,6 +3,7 @@ require('dotenv').config();
 import { Message } from "discord.js";
 import { CommandoClient } from "discord.js-commando";
 import Docs from "./src/commands/support/docs";
+import Tag from "./src/commands/support/tag";
 import { detectors } from "./src/detectors";
 import { Detector } from "./src/detectors/base";
 
@@ -31,6 +32,7 @@ class Bot {
             .registerDefaultGroups()
             .registerDefaultCommands()
             .registerCommand(Docs)
+            .registerCommand(Tag)
 
         this.client.once('ready', () => {
             console.log(`Logged in as ${this.client.user.tag}! (${this.client.user.id})`);

@@ -23,6 +23,11 @@ export abstract class Detector {
         const tags = await getTags()
         const triggeredTags: Tag[] = []
         for (const tag of tags) {
+
+            if (!tag.trigger) {
+                continue
+            }
+
             for (const text of texts) {
                 if (tag.trigger instanceof RegExp) {
                     if (tag.trigger.test(text)) {

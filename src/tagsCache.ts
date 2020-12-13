@@ -34,7 +34,7 @@ export default async function getTags(): Promise<Tag[]> {
         data.tags = data.tags.map(tag => {
 
             if (isRegex(tag.trigger) && safe_regex(tag.trigger)) {
-                tag.trigger = new RegExp(tag.trigger.substring(1, tag.trigger.length - 1))
+                tag.trigger = new RegExp(tag.trigger.substring(1, tag.trigger.length - 1), 'im')
             }
             return {
                 trigger: tag.trigger,

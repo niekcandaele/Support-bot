@@ -2,10 +2,10 @@ import { Command } from 'discord.js-commando';
 import algoliasearch from 'algoliasearch';
 import { MessageEmbed } from 'discord.js';
 
-const client = algoliasearch(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_API_KEY);
-const index = client.initIndex('csmm');
-
 export default class Docs extends Command {
+    searchClient = algoliasearch(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_API_KEY);
+    searchIndex = this.searchClient.initIndex('csmm');
+
     constructor(client) {
         super(client, {
             name: 'docs',
@@ -17,14 +17,15 @@ export default class Docs extends Command {
     }
 
     async run(message, args) {
-        const res: any = await index.search(args, {
-            hitsPerPage: 3,
 
+        const res: any = await this.searchIndex.search(args, {
+            hitsPerPage: 3,
         })
+
         const embed = new MessageEmbed();
 
         if (!res.hits.length) {
-            return message.say('Did not find any results :(');
+            return message.channel.send('Did not find any results :(');
         }
 
         for (const hit of res.hits) {

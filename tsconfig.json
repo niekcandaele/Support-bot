@@ -11,7 +11,7 @@
         "module": "CommonJS"
     },
     "include": [
-        "index.ts",
-        "./src/**/*"
+        "./src/**/*",
+        "index.ts"
     ]
 }

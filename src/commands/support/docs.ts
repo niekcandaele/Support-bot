@@ -1,12 +1,12 @@
-import { Command } from 'discord.js-commando';
+import { Command, CommandoClient, CommandoMessage } from 'discord.js-commando';
 import algoliasearch from 'algoliasearch';
-import { MessageEmbed } from 'discord.js';
+import { Message, MessageEmbed } from 'discord.js';
 
 export default class Docs extends Command {
     searchClient = algoliasearch(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_API_KEY);
     searchIndex = this.searchClient.initIndex('csmm');
 
-    constructor(client) {
+    constructor(client: CommandoClient) {
         super(client, {
             name: 'docs',
             aliases: ['search'],
@@ -16,15 +16,16 @@ export default class Docs extends Command {
         });
     }
 
-    async run(message, args) {
+    async run(message: CommandoMessage, args: string): Promise<Message> {
 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const res: any = await this.searchIndex.search(args, {
             hitsPerPage: 3,
         })
 
         const embed = new MessageEmbed();
 
-        if (!res.hits.length) {
+        if (!res.hits || !res.hits.length) {
             return message.channel.send('Did not find any results :(');
         }
 
@@ -41,15 +42,16 @@ export default class Docs extends Command {
 
         return message.channel.send(embed);
     }
-};
+}
 
 
-function parseHierarchy(obj) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function parseHierarchy(obj: { [x: string]: any; hasOwnProperty: (arg0: string) => any; }) {
     const hierarchy = [];
 
     for (let i = 0; i < 7; i++) {
         const key = `lvl${i}`;
-        if (obj.hasOwnProperty(key)) {
+        if (Object.prototype.hasOwnProperty.call(obj, key)) {
             const element = obj[key];
             if (element) {
                 hierarchy.push(element)
@@ -59,7 +61,7 @@ function parseHierarchy(obj) {
     return hierarchy
 }
 
-function getType(url) {
+function getType(url: string) {
 
     if (/docs.csmm.app\/en\/csmm/.test(url)) {
         return 'CSMM'

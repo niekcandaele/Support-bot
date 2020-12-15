@@ -4,7 +4,7 @@ import getTags, { Tag } from "../tagsCache";
 
 export abstract class Detector {
 
-    public async handleMessage(message: Message) {
+    public async handleMessage(message: Message): Promise<void> {
         const detectedText = await this.detect(message);
 
         const triggeredTags = await this.getTriggeredFromText(detectedText)

@@ -2,6 +2,8 @@ const talkback = require('talkback');
 const path = require('path');
 
 module.exports = async () => {
+    require('dotenv').config();
+
 
     process.env.STRAPI_GQL_URL = 'http://127.0.0.1:5545/graphql';
 

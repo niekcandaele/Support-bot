@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 require('dotenv').config();
 
 import { Message } from "discord.js";
@@ -22,7 +23,7 @@ export default class Bot {
         this.client.on('error', console.error);
     }
 
-    async start() {
+    async start(): Promise<string> {
         await this.loadDetectors()
 
         this.client.registry

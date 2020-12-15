@@ -1,6 +1,5 @@
-import { Message, MessageAttachment } from "discord.js";
+import { Message } from "discord.js";
 import ImageDetector from "./image";
-import TextDetector from "./text";
 
 // How reliable is imgur going to be for this? :D
 const att = { attachments: { 'array': () => [{ url: 'https://i.imgur.com/NBjUJf3.png' }] } } as unknown as Message

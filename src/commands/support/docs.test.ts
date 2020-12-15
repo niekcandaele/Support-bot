@@ -1,4 +1,4 @@
-require('dotenv').config();
+import { CommandoClient, CommandoMessage } from "discord.js-commando";
 import Docs from "./docs";
 
 const algoliaResponses = {
@@ -193,16 +193,17 @@ describe('COMMAND docs', function () {
     let channelSendSpy = jest.fn()
 
     beforeEach(function () {
-        command = new Docs({});
+        command = new Docs({} as CommandoClient);
         channelSendSpy = jest.fn()
     })
 
     it('Searches', async function () {
-        const mockMsg = { channel: { send: channelSendSpy } }
+        const mockMsg = { channel: { send: channelSendSpy } } as unknown as CommandoMessage
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         command.searchIndex.search = jest.fn().mockReturnValue(algoliaResponses.test);
         await command.run(mockMsg, 'test');
-        let call = channelSendSpy.mock.calls[0][0]
+        const call = channelSendSpy.mock.calls[0][0]
 
         expect(channelSendSpy).toBeCalledTimes(1)
         expect(call.fields.length).toBe(3);
@@ -228,11 +229,12 @@ describe('COMMAND docs', function () {
     })
 
     it('Responds correctly when no results', async function () {
-        const mockMsg = { channel: { send: channelSendSpy } }
+        const mockMsg = { channel: { send: channelSendSpy } } as unknown as CommandoMessage
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         command.searchIndex.search = jest.fn().mockReturnValue(algoliaResponses.noResult);
         await command.run(mockMsg, 'something that doesnt exist');
-        let call = channelSendSpy.mock.calls[0][0]
+        const call = channelSendSpy.mock.calls[0][0]
 
         expect(channelSendSpy).toBeCalledTimes(1)
         expect(call.fields).toBe(undefined);

@@ -1,5 +1,4 @@
 import { Message } from "discord.js";
-import { detect } from "tesseract.js";
 import ImageDetector from "./image";
 
 // How reliable is imgur going to be for this? :D

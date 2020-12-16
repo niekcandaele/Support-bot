@@ -17,4 +17,11 @@ describe('DETECTOR image', function () {
         expect(res.length).toBe(1)
         expect(res[0]).toMatch(/Not a valid player profile. Make sure you have logged in to this server. You should also try logging out and back in to CSMM./)
     })
+
+    it('Doesnt crash when not an image', async function () {
+        const att = { attachments: { 'array': () => [{ url: 'https://csmm.app/' }] } } as unknown as Message
+        await detector.init();
+        const res = await detector.detect(att);
+        expect(res.length).toBe(0)
+    })
 })

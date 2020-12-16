@@ -27,6 +27,13 @@ export default class ImageDetector extends Detector {
 
         const promises: Promise<RecognizeResult>[] = [];
         for (const attachment of attachments) {
+
+            if (!/bmp|jpg|png|pbm$/g.test(attachment.url)) {
+                // Not a valid image format
+                // see https://github.com/naptha/tesseract.js/blob/master/docs/image-format.md#image-format
+                continue;
+            }
+
             promises.push(this.worker.recognize(attachment.url))
 
         }

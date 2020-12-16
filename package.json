@@ -6,9 +6,9 @@
   "scripts": {
     "start": "node dist/index.js",
     "start:dev": "nodemon --watch './**/*.ts' --exec 'ts-node' src/index.ts",
-    "test": "jest",
+    "test": "jest --forceExit",
     "test:mutation": "stryker run",
-    "test:coverage": "jest --coverage",
+    "test:coverage": "npm test -- --coverage",
     "build": "tsc",
     "lint": "eslint . --ext .ts"
   },

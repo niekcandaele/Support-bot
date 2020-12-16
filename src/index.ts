@@ -1,27 +1,29 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 require('dotenv').config();
 
 import { Message } from "discord.js";
-import { CommandoClient } from "discord.js-commando";
-import Docs from "./src/commands/support/docs";
-import Tag from "./src/commands/support/tag";
-import { detectors } from "./src/detectors";
-import { Detector } from "./src/detectors/base";
+import { CommandoClient, CommandoClientOptions } from "discord.js-commando";
+import Docs from "./commands/support/docs";
+import Tag from "./commands/support/tag";
+import { detectors } from "./detectors";
+import { Detector } from "./detectors/base";
 
 
-class Bot {
+export default class Bot {
     client: CommandoClient;
     detectors: Detector[] = [];
 
-    constructor() {
+    constructor(clientOptions: CommandoClientOptions) {
         this.client = new CommandoClient({
             commandPrefix: '?',
             owner: '220554523561820160',
+            ...clientOptions
         });
 
         this.client.on('error', console.error);
     }
 
-    async start() {
+    async start(): Promise<string> {
         await this.loadDetectors()
 
         this.client.registry
@@ -38,8 +40,8 @@ class Bot {
             console.log(`Logged in as ${this.client.user.tag}! (${this.client.user.id})`);
         });
 
-        this.client.login(process.env.DISCORD_BOT_TOKEN);
         this.client.on('message', (msg) => this.handleMessage(msg))
+        return this.client.login(process.env.DISCORD_BOT_TOKEN);
     }
 
     private async loadDetectors() {
@@ -59,7 +61,7 @@ class Bot {
 
 }
 
-const bot = new Bot();
+const bot = new Bot({});
 
 
 bot.start();

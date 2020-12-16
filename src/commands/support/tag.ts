@@ -1,10 +1,10 @@
-import { Command } from 'discord.js-commando';
-import { MessageEmbed } from 'discord.js';
+import { Command, CommandoClient, CommandoMessage } from 'discord.js-commando';
+import { Message, MessageEmbed } from 'discord.js';
 import getTags from '../../tagsCache';
 
 
 export default class Tag extends Command {
-    constructor(client) {
+    constructor(client: CommandoClient) {
         super(client, {
             name: 'tag',
             aliases: ['tag'],
@@ -14,7 +14,7 @@ export default class Tag extends Command {
         });
     }
 
-    async run(message, args) {
+    async run(message: CommandoMessage, args: string): Promise<Message | Message[]> {
         const tags = await getTags();
 
         const tagToSend = tags.filter(t => t.code).find(t => t.code.toLowerCase() === args.toLowerCase());
@@ -29,5 +29,5 @@ export default class Tag extends Command {
 
         return message.channel.send(embed);
     }
-};
+}
 

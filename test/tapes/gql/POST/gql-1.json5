@@ -1,0 +1,75 @@
+{
+    meta: {
+        createdAt: '2020-12-15T16:27:10.086Z',
+        host: 'http://127.0.0.1:1337',
+        reqHumanReadable: true,
+        resHumanReadable: true,
+    },
+    req: {
+        url: '/graphql',
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json',
+            accept: '*/*',
+            'user-agent': 'node-fetch/1.0 (+https://github.com/bitinn/node-fetch)',
+            'accept-encoding': 'gzip,deflate',
+            connection: 'close',
+        },
+        body: {
+            query: '\n  {\n    tags {\n        trigger\n        response\n        code\n      }\n  }\n',
+        },
+    },
+    res: {
+        status: 200,
+        headers: {
+            vary: [
+                'Origin',
+            ],
+            'strict-transport-security': [
+                'max-age=31536000; includeSubDomains',
+            ],
+            'x-frame-options': [
+                'SAMEORIGIN',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'content-length': [
+                '501',
+            ],
+            'x-powered-by': [
+                'Strapi <strapi.io>',
+            ],
+            'x-response-time': [
+                '53ms',
+            ],
+            date: [
+                'Tue, 15 Dec 2020 16:27:10 GMT',
+            ],
+            connection: [
+                'close',
+            ],
+        },
+        body: {
+            data: {
+                tags: [
+                    {
+                        trigger: '/(test-regex)/',
+                        response: 'Hello from a regex!',
+                        code: null,
+                    },
+                    {
+                        trigger: 'Not a valid player profile',
+                        response: 'Make sure you have logged in once on your server so that there is a player profile for you. You can see a list of player profiles on your profile page in CSMM.\n\nOtherwise:\n- Log out and log back in to CSMM\n- If that did not fix it, please make a support ticket.',
+                        code: 'shop',
+                    },
+                    {
+                        trigger: '',
+                        response: 'Hello! This test is successful',
+                        code: 'test',
+                    },
+                ],
+            },
+        },
+    },
+}

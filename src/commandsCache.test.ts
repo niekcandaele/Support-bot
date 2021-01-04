@@ -4,7 +4,7 @@ const setSpy = jest.spyOn(NodeCache.prototype, 'set');
 import getCommands from "./commandsCache";
 
 
-describe('Tags cache', function () {
+describe('Commands cache', function () {
 
     it('Returns commands', async function () {
         const res = await getCommands();

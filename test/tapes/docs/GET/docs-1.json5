@@ -1,0 +1,191 @@
+{
+    meta: {
+        createdAt: '2021-01-04T22:23:18.570Z',
+        host: 'https://docs.csmm.app',
+        resHumanReadable: true,
+    },
+    req: {
+        url: '/assets/commands/csmmCommands.json',
+        method: 'GET',
+        headers: {
+            accept: 'application/json, text/plain, */*',
+            'user-agent': 'axios/0.21.0',
+            connection: 'close',
+        },
+        body: '',
+    },
+    res: {
+        status: 200,
+        headers: {
+            date: [
+                'Mon, 04 Jan 2021 22:23:18 GMT',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'transfer-encoding': [
+                'chunked',
+            ],
+            connection: [
+                'close',
+            ],
+            'set-cookie': [
+                '__cfduid=d40f2a0b9d0674fb107be4b4a424578531609798998; expires=Wed, 03-Feb-21 22:23:18 GMT; path=/; domain=.csmm.app; HttpOnly; SameSite=Lax',
+            ],
+            'cache-control': [
+                'public, max-age=0, must-revalidate',
+            ],
+            etag: [
+                'W/"5a4f7e9c8ed445df08d9d6525071397e-ssl-df"',
+            ],
+            age: [
+                '27360',
+            ],
+            vary: [
+                'Accept-Encoding',
+            ],
+            'x-nf-request-id': [
+                '77bb9a27-77d0-4817-9c7a-61bdb53ddcb9-31097414',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            'cf-request-id': [
+                '077118727b00001ea5f9879000000001',
+            ],
+            'expect-ct': [
+                'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+            ],
+            'report-to': [
+                '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report?s=5K0Tth4tXQMWpIL22Biy8grj3A9RgJegh%2FXKsitAUM7nEgDgwwnGPW7da1N%2FNOOhp7lDycJ0IvHHKGD7e2Q0tk7rv5PVj1dnHEYfxsoe"}],"group":"cf-nel","max_age":604800}',
+            ],
+            nel: [
+                '{"report_to":"cf-nel","max_age":604800}',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cf-ray': [
+                '60c85cfd9c391ea5-AMS',
+            ],
+        },
+        body: [
+            {
+                name: 'balance',
+                description: 'See your current balance',
+                extendedDescription: 'How much money is in your bankaccount!',
+                aliases: 'bal, wallet',
+                serverId: {},
+            },
+            {
+                name: 'calladmin',
+                description: 'Make a support ticket',
+                extendedDescription: 'Creates a support ticket on the website and notifies admins of your call for help',
+                aliases: 'admin, admins, support',
+                serverId: {},
+            },
+            {
+                name: 'claim',
+                description: 'Claim items you have bought in the shop',
+                extendedDescription: 'This command will drop the items at your feet. Best to do this in a safe location! If you provide the list argument you will instead see a list of items you can claim. If you pass a number as argument, you will claim that many items',
+                aliases: 'claimitems',
+                serverId: {},
+            },
+            {
+                name: 'gimme',
+                description: 'Get some random item. GIMME GIMME',
+                extendedDescription: 'Get a random item, entity or command. An admin must configure possible items via the webinterface before you can use this command.',
+                aliases: 'gimmie',
+                serverId: {},
+            },
+            {
+                name: 'help',
+                description: 'Get some help',
+                serverId: {},
+            },
+            {
+                name: 'listtele',
+                description: 'List teleport locations',
+                extendedDescription: "Lists your teleport locations. By providing a 'public' argument, you will instead see a list of public teleports",
+                aliases: 'telelist, teleslist, listteles',
+                serverId: {},
+            },
+            {
+                name: 'pay',
+                description: 'Send some currency to another player.',
+                extendedDescription: 'Usage: pay <playerName or steamId> amount',
+                serverId: {},
+            },
+            {
+                name: 'removetele',
+                description: 'Remove a teleport location',
+                extendedDescription: 'Delete a teleport location from the system',
+                aliases: 'deltele, teledelete, deletetele, teleremove',
+                serverId: {},
+            },
+            {
+                name: 'renametele',
+                description: 'Rename a teleport location',
+                extendedDescription: 'Arguments: oldname newname',
+                aliases: 'telerename',
+                serverId: {},
+            },
+            {
+                name: 'seen',
+                description: 'Check when a player was last online',
+                extendedDescription: 'Arguments: playername or steam/entity ID',
+                aliases: 'lastseen, lastonline',
+                serverId: {},
+            },
+            {
+                name: 'settele',
+                description: 'Create a teleport location',
+                extendedDescription: 'Creates a teleport location at your current position. Arguments: name',
+                aliases: 'teleset, telecreate',
+                serverId: {},
+            },
+            {
+                name: 'shop',
+                description: 'Ingame shop',
+                extendedDescription: '',
+                aliases: 'store',
+                serverId: {},
+            },
+            {
+                name: 'tele',
+                description: 'Teleport to a set location.',
+                extendedDescription: 'Provide the name of where you want to go',
+                aliases: 'tp, teleport',
+                serverId: {},
+            },
+            {
+                name: 'telepublic',
+                description: 'Make a teleport public',
+                extendedDescription: 'Let everyone on the server teleport to a location',
+                aliases: 'telepub, pubtele, publictele',
+                serverId: {},
+            },
+            {
+                name: 'teleprivate',
+                description: 'Make a teleport private',
+                extendedDescription: 'When a teleport is private, only you can use it.',
+                aliases: 'privatetele, privtele, telepriv',
+                serverId: {},
+            },
+            {
+                name: 'vote',
+                description: 'Claim vote rewards',
+                extendedDescription: 'Vote at https://7daystodie-servers.com/ to claim rewards!',
+                aliases: [],
+                serverId: {},
+            },
+            {
+                name: 'who',
+                description: 'See who was in your area',
+                extendedDescription: 'You can provide a optional size argument. For most accurate results, try to keep the size as small as possible',
+                aliases: 'track, search',
+                serverId: {},
+            },
+        ],
+    },
+}

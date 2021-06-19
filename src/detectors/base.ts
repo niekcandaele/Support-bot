@@ -1,5 +1,6 @@
-import { Message, MessageEmbed } from "discord.js";
-import getTags, { Tag } from "../tagsCache";
+import { Message, MessageEmbed } from 'discord.js';
+
+import { Tag, tags } from '../tags';
 
 
 export abstract class Detector {
@@ -20,7 +21,6 @@ export abstract class Detector {
     abstract init(): Promise<void>
 
     private async getTriggeredFromText(texts: string[]) {
-        const tags = await getTags()
         const triggeredTags: Tag[] = []
         for (const tag of tags) {
 

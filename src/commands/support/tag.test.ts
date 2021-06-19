@@ -1,5 +1,6 @@
-import { CommandoClient, CommandoMessage } from "discord.js-commando";
-import Tag from "./tag";
+import { CommandoClient, CommandoMessage } from 'discord.js-commando';
+
+import Tag from './tag';
 
 let channelSendSpy = jest.fn()
 let replySpy = jest.fn()
@@ -29,7 +30,7 @@ describe('COMMAND tag', function () {
 
         call = replySpy.mock.calls[0][0]
 
-        expect(call).toBe('No matching tag found for "doesnt exist". Here\'s some tags that you can use instead: `shop`, `test`')
+        expect(call).toBe('No matching tag found for "doesnt exist". Here\'s some tags that you can use instead: `test`, `shop`')
     })
 
     it('Tries to match with a command if no tags were found', async () => {

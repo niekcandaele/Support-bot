@@ -1,5 +1,6 @@
-import { Message } from "discord.js";
-import TextDetector from "./text";
+import { Message } from 'discord.js';
+
+import TextDetector from './text';
 
 const replySpy = jest.fn()
 
@@ -9,7 +10,7 @@ describe('DETECTOR base', function () {
 
 
     it('Replies to the text', async function () {
-        // We use the Text implemtation because it's the simplest
+        // We use the Text implementation because it's the simplest
         const detector = new TextDetector();
         await detector.handleMessage({ content: 'Hello!', reply: replySpy } as unknown as Message);
         expect(replySpy).toBeCalledTimes(0)

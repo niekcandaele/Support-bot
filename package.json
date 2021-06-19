@@ -10,7 +10,9 @@
     "test:mutation": "stryker run",
     "test:coverage": "npm test -- --coverage",
     "build": "tsc",
-    "lint": "eslint . --ext .ts"
+    "lint": "eslint . --ext .ts",
+    "prettier:write": "prettier --write .",
+    "prettier:check": "prettier --check ."
   },
   "author": "",
   "license": "ISC",

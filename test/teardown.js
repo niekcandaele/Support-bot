@@ -1,3 +1,3 @@
 module.exports = async function () {
-    await global.docsServer.close();
+  await global.docsServer.close();
 };

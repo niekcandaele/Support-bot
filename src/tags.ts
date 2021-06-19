@@ -37,10 +37,7 @@ export const tags: Tag[] = [
   {
     trigger:
       /This instance is private and only CSMM system admins can add servers/,
-    response: `The US instance is not currently accepting new connections because it is full and overloaded - you can go to https://csmm.app/ and select one of the other instances
-
-        ---
-        
+    response: `
         If you are self-hosting this issue is often caused by a misconfiguration of env variables.
         Make sure the \`CSMM_ADMINS\` env variable is uncommented and contains your Steam ID.`,
   },
@@ -111,9 +108,9 @@ export const tags: Tag[] = [
   },
   {
     response:
-      "The public instances are donator only.\n\nIf you wish to continue to use the public instances, you will have to register for a paid plan via [Patreon](https://www.patreon.com/catalysm).\n\nIf you wish to continue to use CSMM for free, you can install it on your own server. [Docs](https://docs.csmm.app/en/CSMM/self-host/installation.html)",
+      "The public instances are donator only.\n\nIf you wish to continue to use the public instances, you will have to register for a paid plan via [Patreon](https://www.patreon.com/catalysm).\n\nIf you wish to continue to use CSMM for free, you can install it on your own server. [Docs](https://docs.csmm.app/en/CSMM/self-host/installation.html) \n\n --- \n\n If you have already donated and are still getting this message, please check and make sure your Discord account is connected to Patreon and to CSMM. You can check your donator status on your profile page on CSMM.",
     code: "publicinstance",
     trigger:
-      /This instance is reserved for donators, please use a public instance instead./,
+      /This instance is reserved for donators, please use a public instance instead/,
   },
 ];

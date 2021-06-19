@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Message, MessageAttachment } from "discord.js";
+
 import { Detector } from "./base";
 
 export default class FileDetector extends Detector {
@@ -15,8 +16,8 @@ export default class FileDetector extends Detector {
 
   private async getTextFromFiles(
     attachments: MessageAttachment[]
-  ): Promise<any[]> {
-    const promises: Promise<any>[] = [];
+  ): Promise<string[]> {
+    const promises: Promise<{ data: string }>[] = [];
     for (const attachment of attachments) {
       promises.push(axios.get(attachment.url, { responseType: "blob" }));
     }

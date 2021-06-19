@@ -1,6 +1,6 @@
-import { Command, CommandoClient, CommandoMessage } from "discord.js-commando";
 import algoliasearch from "algoliasearch";
 import { Message, MessageEmbed } from "discord.js";
+import { Command, CommandoClient, CommandoMessage } from "discord.js-commando";
 
 export default class Docs extends Command {
   searchClient = algoliasearch(
@@ -49,9 +49,10 @@ export default class Docs extends Command {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function parseHierarchy(obj: {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [x: string]: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   hasOwnProperty: (arg0: string) => any;
 }) {
   const hierarchy = [];

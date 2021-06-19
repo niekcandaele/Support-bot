@@ -111,7 +111,7 @@ export const tags: Tag[] = [
   },
   {
     response:
-      "The public instances are donator only. Servers that are on the free plan will be deleted at the beginning of february.\n\nIf you wish to continue to use the public instances, you will have to register for a paid plan via Patreon.\n\nIf you wish to continue to use CSMM for free, you can install it on your own server. [Docs](https://docs.csmm.app/en/CSMM/self-host/installation.html)",
+      "The public instances are donator only.\n\nIf you wish to continue to use the public instances, you will have to register for a paid plan via [Patreon](https://www.patreon.com/catalysm).\n\nIf you wish to continue to use CSMM for free, you can install it on your own server. [Docs](https://docs.csmm.app/en/CSMM/self-host/installation.html)",
     code: "publicinstance",
     trigger:
       /This instance is reserved for donators, please use a public instance instead./,

@@ -2,26 +2,32 @@ import { Message } from "discord.js";
 import ImageDetector from "./image";
 
 // How reliable is imgur going to be for this? :D
-const att = { attachments: { 'array': () => [{ url: 'https://i.imgur.com/NBjUJf3.png' }] } } as unknown as Message
+const att = {
+  attachments: { array: () => [{ url: "https://i.imgur.com/NBjUJf3.png" }] },
+} as unknown as Message;
 
-describe('DETECTOR image', function () {
-    const detector = new ImageDetector();
-    afterAll(async () => {
-        await detector.worker.terminate()
-    })
+describe("DETECTOR image", function () {
+  const detector = new ImageDetector();
+  afterAll(async () => {
+    await detector.worker.terminate();
+  });
 
-    jest.setTimeout(15000)
-    it('Detects the text', async function () {
-        await detector.init();
-        const res = await detector.detect(att);
-        expect(res.length).toBe(1)
-        expect(res[0]).toMatch(/Not a valid player profile. Make sure you have logged in to this server. You should also try logging out and back in to CSMM./)
-    })
+  jest.setTimeout(15000);
+  it("Detects the text", async function () {
+    await detector.init();
+    const res = await detector.detect(att);
+    expect(res.length).toBe(1);
+    expect(res[0]).toMatch(
+      /Not a valid player profile. Make sure you have logged in to this server. You should also try logging out and back in to CSMM./
+    );
+  });
 
-    it('Doesnt crash when not an image', async function () {
-        const att = { attachments: { 'array': () => [{ url: 'https://csmm.app/' }] } } as unknown as Message
-        await detector.init();
-        const res = await detector.detect(att);
-        expect(res.length).toBe(0)
-    })
-})
+  it("Doesnt crash when not an image", async function () {
+    const att = {
+      attachments: { array: () => [{ url: "https://csmm.app/" }] },
+    } as unknown as Message;
+    await detector.init();
+    const res = await detector.detect(att);
+    expect(res.length).toBe(0);
+  });
+});

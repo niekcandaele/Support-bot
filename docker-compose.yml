@@ -3,25 +3,3 @@ services:
   bot:
     build: .
     env_file: .env
-
-  strapi:
-    image: strapi/strapi
-    env_file: .env
-    links:
-      - postgres:postgres
-    volumes:
-      - strapi:/srv/app
-    ports:
-      - "127.0.0.1:1337:1337"
-
-  postgres:
-    image: postgres
-    env_file: .env
-    volumes:
-      - strapi-pg:/var/lib/postgresql/data
-    ports:
-      - "127.0.0.1:5432:5432"
-
-volumes:
-  strapi-pg:
-  strapi:

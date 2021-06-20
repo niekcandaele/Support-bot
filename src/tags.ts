@@ -50,6 +50,7 @@ export const tags: Tag[] = [
     response:
       "To find the port of the Allocs Fixes webserver, there are 2 options\n\n- Via logs\nIn the output log of your server, find a line like `2018-09-15T01:27:41 61.339 INF Started Webserver on 8090`. 8090 is your port value\n\n- Via serverconfig.xml\nThe port is defined as ControlPanelPort +2. Find that value and in your browser go to http://<yourserverip>:<value>. If you see the Allocs webmap, you've found the correct port!\nPlease note that if you are using a hosting provider, the port in your serverconfig.xml may be remapped and thus the value you get may not be correct\n\n",
     code: "port",
+    trigger: /CSMM tried to send a GET request to/,
   },
   {
     response:
@@ -85,6 +86,7 @@ export const tags: Tag[] = [
     response:
       "In order for CSMM to be able to communicate with your server, you have to set up authentication info on your server.\nThe easiest way to do this is with the `webtokens` command inside your telnet/ingame command console. Please choose a strong and random token. If someone guesses this token, he/she will get FULL access to your server console and will be able to execute ANY command.\n\n[Generated random code](https://www.random.org/strings/?num=10&len=20&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new)\n\nExample: `webtokens add <name> <token> 0`\n[More info](https://docs.csmm.app/en/CSMM/installation.html#set-up-web-api-credentials) ",
     code: "webtokens",
+    trigger: /CSMM could not execute the 'mem' command on your server./,
   },
   {
     response:

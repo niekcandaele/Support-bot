@@ -115,4 +115,13 @@ export const tags: Tag[] = [
     trigger:
       /This instance is reserved for donators, please use a public instance instead/,
   },
+  {
+    response: `CSMM Patron's Mod (CPM) is a companion mod to CSMM maintained by Prisma. Its free to use and can be used without CSMM. CPM is a forked extension of Coppi's Mod (used and continued under a new name with permission of original author Danilo Coppi), extending the functionality of existing commands, and adding new commands and features. CPM adds loads of new features to your server. These features include both console commands, as well as chat commands. Use it to extend the possibilities of what you can do with CSMM.
+      
+      [Downloads](https://github.com/Prisma501/CSMM-Patrons-Mod/releases)
+      [Documentation](https://docs.csmm.app/en/cpm/)
+      [Patched map.js](https://github.com/Prisma501/Allocs-Webmap-for-CPM)
+      `,
+    code: "cpm",
+  },
 ];

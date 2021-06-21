@@ -25,6 +25,7 @@ export default class Tag extends Command {
       const possibleTags = tags
         .filter((t) => t.code)
         .map((t) => `\`${t.code}\``)
+        .sort(alphabeticalComparer)
         .join(", ");
       return message.reply(
         `No matching tag found for "${args}". Here's some tags that you can use instead: ${possibleTags}`
@@ -74,4 +75,14 @@ async function determineReply(textToSearch): Promise<ITag> {
 
   // Found nothing 😭
   return null;
+}
+
+function alphabeticalComparer(a: string, b: string): number {
+  if (a > b) {
+    return 1;
+  }
+  if (b > a) {
+    return -1;
+  }
+  return 0;
 }

@@ -20,7 +20,7 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          push: "{{ github.ref == 'ref/head/master' }}"
+          push: ${{ github.ref == 'refs/heads/master' }}
           tags: catalysm/support-bot:latest
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

@@ -124,4 +124,10 @@ export const tags: Tag[] = [
       `,
     code: "cpm",
   },
+  {
+    response:
+      "Please try toggling CSMM Features off and back on again.\n\nIn Settings, Basic server settings, clear the checkbox for Enable CSMM features, then click Save.\nTick the checkbox again and click Save again.",
+    code: "toggle",
+  },
 ];
+

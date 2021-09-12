@@ -130,4 +130,3 @@ export const tags: Tag[] = [
     code: "toggle",
   },
 ];
-

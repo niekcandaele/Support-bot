@@ -25,15 +25,12 @@ export default class Log extends Command {
 
     for (const attachment of attachments) {
       const content = await downloadAttachment(attachment);
-      console.log(content);
-
       const analyser = new LogAnalysis(content.split("\r\n"));
       const result = await analyser.analyse();
       const embed = constructEmbed(result, attachment);
       await message.reply(embed);
     }
-
-    return message.say("Done");
+    return [];
   }
 }
 

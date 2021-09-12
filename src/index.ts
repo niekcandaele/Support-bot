@@ -1,12 +1,14 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-require("dotenv").config();
-
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { Message } from "discord.js";
 import { CommandoClient, CommandoClientOptions } from "discord.js-commando";
+
 import Docs from "./commands/support/docs";
+import Log from "./commands/support/logs";
 import Tag from "./commands/support/tag";
 import { detectors } from "./detectors";
 import { Detector } from "./detectors/base";
+
+require("dotenv").config();
 
 export default class Bot {
   client: CommandoClient;
@@ -31,7 +33,8 @@ export default class Bot {
       .registerDefaultGroups()
       .registerDefaultCommands()
       .registerCommand(Docs)
-      .registerCommand(Tag);
+      .registerCommand(Tag)
+      .registerCommand(Log);
 
     this.client.once("ready", () => {
       console.log(

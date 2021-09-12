@@ -23,6 +23,7 @@
     "discord.js": "^12.5.1",
     "discord.js-commando": "github:discordjs/Commando",
     "dotenv": "^8.2.0",
+    "gestalt-pattern-matcher": "^0.0.12",
     "graphql": "^15.4.0",
     "graphql-request": "^3.3.0",
     "node-cache": "^5.1.2",

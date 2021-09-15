@@ -50,7 +50,7 @@ describe("COMMAND tag", function () {
 
             Make a support ticket
 
-            Creates a support ticket on the website and notifies admins of your call for help`);
+            Creates a support ticket on the website and notifies admins of your call for help. Usage: "$calladmin help my bike is stuck"`);
   });
 
   it("Tries to match with a command if no tags were found, with aliases", async () => {
@@ -68,6 +68,6 @@ describe("COMMAND tag", function () {
 
             Make a support ticket
 
-            Creates a support ticket on the website and notifies admins of your call for help`);
+            Creates a support ticket on the website and notifies admins of your call for help. Usage: "$calladmin help my bike is stuck"`);
   });
 });

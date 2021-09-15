@@ -5,6 +5,7 @@ import { CommandoClient, CommandoClientOptions } from "discord.js-commando";
 import Docs from "./commands/support/docs";
 import Log from "./commands/support/logs";
 import Tag from "./commands/support/tag";
+import Tldr from "./commands/support/tldr";
 import { detectors } from "./detectors";
 import { Detector } from "./detectors/base";
 
@@ -34,7 +35,8 @@ export default class Bot {
       .registerDefaultCommands()
       .registerCommand(Docs)
       .registerCommand(Tag)
-      .registerCommand(Log);
+      .registerCommand(Log)
+      .registerCommand(Tldr);
 
     this.client.once("ready", () => {
       console.log(

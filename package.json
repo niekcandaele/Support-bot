@@ -26,6 +26,7 @@
     "gestalt-pattern-matcher": "^0.0.12",
     "graphql": "^15.4.0",
     "graphql-request": "^3.3.0",
+    "leven": "^3.1.0",
     "node-cache": "^5.1.2",
     "remove": "^0.1.5",
     "safe-regex": "^2.1.1",

@@ -35,6 +35,19 @@ describe("COMMAND tag", function () {
     );
   });
 
+  it("Has a tolerance for typos", async function () {
+    const mockMsg = {
+      channel: { send: channelSendSpy },
+      reply: replySpy,
+    } as unknown as CommandoMessage;
+    const command = new Tag({} as CommandoClient);
+    await command.run(mockMsg, "tst");
+    const call = channelSendSpy.mock.calls[0][0];
+
+    expect(channelSendSpy).toBeCalledTimes(1);
+    expect(call.description).toBe("Hello! This test is successful");
+  });
+
   it("Tries to match with a command if no tags were found", async () => {
     const mockMsg = {
       channel: { send: channelSendSpy },
@@ -45,12 +58,9 @@ describe("COMMAND tag", function () {
 
     expect(channelSendSpy).toBeCalledTimes(1);
     const call = channelSendSpy.mock.calls[0][0];
-    expect(call.description).toBe(`
-            calladmin
-
-            Make a support ticket
-
-            Creates a support ticket on the website and notifies admins of your call for help. Usage: "$calladmin help my bike is stuck"`);
+    expect(call.description).toBe(
+      `calladmin\n\nMake a support ticket\n\nCreates a support ticket on the website and notifies admins of your call for help. Usage: "$calladmin help my bike is stuck"`
+    );
   });
 
   it("Tries to match with a command if no tags were found, with aliases", async () => {
@@ -63,11 +73,9 @@ describe("COMMAND tag", function () {
 
     expect(channelSendSpy).toBeCalledTimes(1);
     const call = channelSendSpy.mock.calls[0][0];
-    expect(call.description).toBe(`
-            calladmin
-
-            Make a support ticket
-
-            Creates a support ticket on the website and notifies admins of your call for help. Usage: "$calladmin help my bike is stuck"`);
+    console.log(call.description);
+    expect(call.description).toBe(
+      `calladmin\n\nMake a support ticket\n\nCreates a support ticket on the website and notifies admins of your call for help. Usage: "$calladmin help my bike is stuck"`
+    );
   });
 });

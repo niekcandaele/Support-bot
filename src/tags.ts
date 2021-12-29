@@ -133,4 +133,9 @@ export const tags: Tag[] = [
     response: "https://docs.csmm.app",
     code: "docs",
   },
+  {
+    response:
+      "If you are using a Steam ID in your command, note that it must be in the format Steam_71234567890123456. The capital S on Steam is important.",
+    code: "steamid",
+  },
 ];

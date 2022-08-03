@@ -90,7 +90,7 @@ export const tags: Tag[] = [
   },
   {
     response:
-      "[Info on all benefits](https://www.csmm.app/donate.html)\n\nMake sure you link your Discord profile to CSMM and [to Patreon](https://support.patreon.com/hc/en-us/articles/212052266-Get-my-Discord-role) after donating\n",
+      "[Info on all benefits](https://www.csmm.app/donate.html)\n\nMake sure you link your Discord profile to CSMM [[EU](https://eu.csmm.app/auth/discord) [US](https://us.csmm.app/auth/discord) [AU](https://au.csmm.app/auth/discord)] and [to Patreon](https://support.patreon.com/hc/en-us/articles/212052266-Get-my-Discord-role) after donating\nIt could take up to 5-10 minutes for the sync to occur. If after this time you still don't have a Discord role, try linking Discord on CSMM *again*.",
     code: "donate",
   },
   {

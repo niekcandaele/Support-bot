@@ -1,5 +1,5 @@
-import Axios from "axios";
 import NodeCache from "node-cache";
+import Axios from "axios";
 
 const cache = new NodeCache({ stdTTL: 360, checkperiod: 60 });
 
@@ -8,7 +8,6 @@ export interface Command {
   description: string;
   extendedDescription: string;
   aliases: string[];
-  priority: number;
 }
 
 export default async function getCommands(): Promise<Command[]> {
@@ -27,8 +26,6 @@ export default async function getCommands(): Promise<Command[]> {
         _.aliases = _.aliases.split(",").map((_) => _.trim());
       }
 
-      _.priority = 1;
-
       return _;
     }) as Command[];
 
@@ -41,7 +38,6 @@ export default async function getCommands(): Promise<Command[]> {
         description: _.description,
         extendedDescription: _.help,
         aliases: _.command.split(",").map((_) => _.trim()),
-        priority: 2,
       };
     });
 

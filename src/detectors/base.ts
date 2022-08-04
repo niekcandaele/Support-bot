@@ -1,4 +1,4 @@
-import { Message, MessageEmbed } from "discord.js";
+import { Message, EmbedBuilder } from "discord.js";
 
 import { Tag, tags } from "../tags";
 
@@ -50,10 +50,10 @@ export abstract class Detector {
   }
 
   private sendResponse(message: Message, tag: Tag) {
-    const embed = new MessageEmbed();
+    const embed = new EmbedBuilder();
 
     embed.setDescription(tag.response);
-    embed.setFooter(`Triggered by "${tag.trigger.toString()}"`);
-    return message.reply(embed);
+    embed.setFooter({ text: `Triggered by "${tag.trigger.toString()}"` });
+    return message.reply({ embeds: [embed] });
   }
 }

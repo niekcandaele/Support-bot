@@ -4,7 +4,7 @@ jest.mock("axios");
 import FileDetector from "./file";
 
 const att = {
-  attachments: { array: () => [{ url: "url to a file" }] },
+  attachments: { values: () => [{ url: "url to a file" }] },
 } as unknown as Message;
 
 describe("DETECTOR file", function () {

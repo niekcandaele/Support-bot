@@ -74,7 +74,6 @@ export default class Bot {
   }
 
   private async handleMessage(message: Message) {
-    console.log("detected a message!");
     for (const d of this.detectors) {
       await d.handleMessage(message);
     }

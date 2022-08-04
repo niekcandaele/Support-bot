@@ -1,4 +1,4 @@
-FROM node:18 as builder
+FROM node:16 as builder
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -12,7 +12,7 @@ COPY --chown=node:node . .
 RUN npm ci
 RUN npm run build
 
-FROM node:18 as prod
+FROM node:16 as prod
 
 WORKDIR /usr/src/app
 RUN chown -R node:node /usr/src/app

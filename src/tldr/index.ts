@@ -6,14 +6,23 @@ export class Tldr {
 
   private platforms = ["linux", "common", "windows", "osx", "sunos", "android"];
 
-  async get(command: string) {
+  async get(command: string): Promise<
+    {
+      data: string;
+      platform: string;
+      command: string;
+    }[]
+  > {
     const results = await Promise.all(
       this.platforms.map((platform) => this._request(platform, command))
     );
     return results.filter(Boolean);
   }
 
-  async _request(platform: string, command: string) {
+  async _request(
+    platform: string,
+    command: string
+  ): Promise<{ data: string; platform: string; command: string } | null> {
     try {
       const result = await axios.get(
         `${this.baseUrl}/${platform}/${command}.md`,

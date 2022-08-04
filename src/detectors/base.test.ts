@@ -20,8 +20,8 @@ describe("DETECTOR base", function () {
     expect(replySpy).toBeCalledTimes(1);
     const call = replySpy.mock.calls[0][0];
 
-    expect(call.description).toBe("Hello from a regex!");
-    expect(call.footer.text).toMatch(/(Triggered by ).*/);
+    expect(call.embeds[0].data.description).toBe("Hello from a regex!");
+    expect(call.embeds[0].data.footer.text).toMatch(/(Triggered by ).*/);
 
     await detector.handleMessage({
       content: "Not a valid player profile",

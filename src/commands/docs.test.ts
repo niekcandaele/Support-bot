@@ -1,5 +1,6 @@
-import { CommandoClient, CommandoMessage } from "discord.js-commando";
-import Docs from "./docs";
+import { ChatInputCommandInteraction } from "discord.js";
+import { getSearchIndex } from "../algolia";
+import { DocsCommand } from "./docs";
 
 const algoliaResponses = {
   test: {
@@ -195,61 +196,58 @@ const algoliaResponses = {
 };
 
 describe("COMMAND docs", function () {
-  let command: Docs;
+  const command = DocsCommand.handler;
   let channelSendSpy = jest.fn();
 
   beforeEach(function () {
-    command = new Docs({} as CommandoClient);
     channelSendSpy = jest.fn();
   });
 
   it("Searches", async function () {
-    const mockMsg = {
-      channel: { send: channelSendSpy },
-    } as unknown as CommandoMessage;
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    command.searchIndex.search = jest
-      .fn()
-      .mockReturnValue(algoliaResponses.test);
-    await command.run(mockMsg, "test");
+    const mockInteraction = {
+      options: { data: [{ name: "query", value: "test" }] },
+      reply: channelSendSpy,
+    } as unknown as ChatInputCommandInteraction;
+
+    const searchIndex = await getSearchIndex();
+    //@ts-expect-error Overwriting a readonly prop here for testing
+    searchIndex.search = jest.fn().mockReturnValue(algoliaResponses.test);
+    await command(mockInteraction);
     const call = channelSendSpy.mock.calls[0][0];
 
     expect(channelSendSpy).toBeCalledTimes(1);
-    expect(call.fields.length).toBe(3);
-    expect(call.footer.text).toBe('Searched for "test"');
-    expect(call.fields).toStrictEqual([
+    expect(call.embeds[0].data.fields.length).toBe(3);
+    expect(call.embeds[0].data.footer.text).toBe('Searched for "test"');
+    expect(call.embeds[0].data.fields).toStrictEqual([
       {
         name: "CSMM - Custom Hook Parameters",
-        value:
-          "[CSMM/Advanced/Custom Hook Parameters](https://docs.csmm.app/en/csmm/hooks#custom-hook-parameters)",
-        inline: false,
+        value: "https://docs.csmm.app/en/csmm/hooks#custom-hook-parameters",
       },
       {
         name: "CPM - Cron jobs / server automation",
         value:
-          "[CPM/Documentation/Cron jobs / server automation](https://docs.csmm.app/en/cpm/configuration-examples#cron-jobs-server-automation)",
-        inline: false,
+          "https://docs.csmm.app/en/cpm/configuration-examples#cron-jobs-server-automation",
       },
       {
         name: "7D2D - Creating the &quot;listen&quot; hook for specific content in a chatmessage",
         value:
-          "[7D2D/Advanced/Creating the &quot;listen&quot; hook for specific content in a chatmessage](https://docs.csmm.app/en/7d2d/advanced-feature-guide-chathook#creating-the-listen-hook-for-specific-content-in-a-chatmessage)",
-        inline: false,
+          "https://docs.csmm.app/en/7d2d/advanced-feature-guide-chathook#creating-the-listen-hook-for-specific-content-in-a-chatmessage",
       },
     ]);
   });
 
   it("Responds correctly when no results", async function () {
-    const mockMsg = {
-      channel: { send: channelSendSpy },
-    } as unknown as CommandoMessage;
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    command.searchIndex.search = jest
-      .fn()
-      .mockReturnValue(algoliaResponses.noResult);
-    await command.run(mockMsg, "something that doesnt exist");
+    const mockInteraction = {
+      options: {
+        data: [{ name: "query", value: "something that doesnt exist" }],
+      },
+      reply: channelSendSpy,
+    } as unknown as ChatInputCommandInteraction;
+
+    const searchIndex = await getSearchIndex();
+    //@ts-expect-error Overwriting a readonly prop here for testing
+    searchIndex.search = jest.fn().mockReturnValue(algoliaResponses.noResult);
+    await command(mockInteraction);
     const call = channelSendSpy.mock.calls[0][0];
 
     expect(channelSendSpy).toBeCalledTimes(1);

@@ -3,7 +3,7 @@ import ImageDetector from "./image";
 
 // How reliable is imgur going to be for this? :D
 const att = {
-  attachments: { array: () => [{ url: "https://i.imgur.com/NBjUJf3.png" }] },
+  attachments: { values: () => [{ url: "https://i.imgur.com/NBjUJf3.png" }] },
 } as unknown as Message;
 
 describe("DETECTOR image", function () {
@@ -24,7 +24,7 @@ describe("DETECTOR image", function () {
 
   it("Doesnt crash when not an image", async function () {
     const att = {
-      attachments: { array: () => [{ url: "https://csmm.app/" }] },
+      attachments: { values: () => [{ url: "https://csmm.app/" }] },
     } as unknown as Message;
     await detector.init();
     const res = await detector.detect(att);

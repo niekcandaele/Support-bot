@@ -1,50 +1,55 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { Message } from "discord.js";
-import { CommandoClient, CommandoClientOptions } from "discord.js-commando";
+import { Message, Client, GatewayIntentBits } from "discord.js";
+import { Routes } from "discord.js";
+import { REST } from "@discordjs/rest";
 
-import Docs from "./commands/support/docs";
-import Log from "./commands/support/logs";
-import Tag from "./commands/support/tag";
-import Tldr from "./commands/support/tldr";
 import { detectors } from "./detectors";
 import { Detector } from "./detectors/base";
+import { commands } from "./commands";
 
 require("dotenv").config();
 
 export default class Bot {
-  client: CommandoClient;
+  client: Client;
+  private clientId: string = process.env.DISCORD_CLIENT_ID;
   detectors: Detector[] = [];
+  private rest: REST;
 
-  constructor(clientOptions: CommandoClientOptions) {
-    this.client = new CommandoClient({
-      commandPrefix: "?",
-      owner: "220554523561820160",
-      ...clientOptions,
+  constructor() {
+    this.client = new Client({
+      intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.MessageContent,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.DirectMessages,
+      ],
     });
 
     this.client.on("error", console.error);
+    this.rest = new REST({ version: "10" }).setToken(
+      process.env.DISCORD_BOT_TOKEN
+    );
   }
 
   async start(): Promise<string> {
     await this.loadDetectors();
 
-    this.client.registry
-      .registerDefaultTypes()
-      .registerGroups([["support", "Support commands"]])
-      .registerDefaultGroups()
-      .registerDefaultCommands()
-      .registerCommand(Docs)
-      .registerCommand(Tag)
-      .registerCommand(Log)
-      .registerCommand(Tldr);
-
     this.client.once("ready", () => {
       console.log(
         `Logged in as ${this.client.user.tag}! (${this.client.user.id})`
       );
+      this.deployCommands();
     });
 
-    this.client.on("message", (msg) => this.handleMessage(msg));
+    this.client.on("messageCreate", (msg) => this.handleMessage(msg));
+
+    this.client.on("interactionCreate", async (interaction) => {
+      if (!interaction.isChatInputCommand()) return;
+
+      const command = commands.get(interaction.commandName);
+      await command.handler(interaction);
+    });
+
     return this.client.login(process.env.DISCORD_BOT_TOKEN);
   }
 
@@ -57,13 +62,25 @@ export default class Bot {
     }
   }
 
+  private async deployCommands() {
+    return this.rest
+      .put(Routes.applicationCommands(this.clientId), {
+        body: Array.from(commands.values()).map((command) =>
+          command.slashCommand.toJSON()
+        ),
+      })
+      .then(() => console.log("Successfully registered application commands."))
+      .catch(console.error);
+  }
+
   private async handleMessage(message: Message) {
+    console.log("detected a message!");
     for (const d of this.detectors) {
       await d.handleMessage(message);
     }
   }
 }
 
-const bot = new Bot({});
+const bot = new Bot();
 
 bot.start();

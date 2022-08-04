@@ -1,25 +1,35 @@
-import { Message, MessageEmbed } from "discord.js";
-import { Command, CommandoClient, CommandoMessage } from "discord.js-commando";
+import { EmbedBuilder, SlashCommandBuilder } from "discord.js";
+import { ICommand } from "./base";
+import getCommands from "../commandsCache";
+import { Tag as ITag, tags } from "../tags";
 
-import getCommands from "../../commandsCache";
-import { Tag as ITag, tags } from "../../tags";
+const tagChoices = tags
+  .filter((tag) => tag.code)
+  .map((tag) => {
+    return {
+      name: tag.code,
+      value: tag.code,
+    };
+  });
 
-export default class Tag extends Command {
-  constructor(client: CommandoClient) {
-    super(client, {
-      name: "tag",
-      aliases: ["tags"],
-      group: "support",
-      memberName: "tag",
-      description: "Pastes a tag",
-    });
-  }
+export const TagCommand: ICommand = {
+  name: "tag",
+  slashCommand: new SlashCommandBuilder()
+    .setName("tag")
+    .setDescription("Replies with a tag")
+    .addStringOption((option) =>
+      option
+        .setName("tag")
+        .setRequired(true)
+        .setDescription("What to search for")
+        .addChoices(...tagChoices)
+    ),
+  handler: async (interaction) => {
+    const tag = interaction.options.data
+      .find((option) => option.name === "tag")
+      .value.toString();
 
-  async run(
-    message: CommandoMessage,
-    args: string
-  ): Promise<Message | Message[]> {
-    const tagToSend = await determineReply(args);
+    const tagToSend = await determineReply(tag);
 
     if (!tagToSend) {
       const possibleTags = tags
@@ -27,18 +37,19 @@ export default class Tag extends Command {
         .map((t) => `\`${t.code}\``)
         .sort(alphabeticalComparer)
         .join(", ");
-      return message.reply(
-        `No matching tag found for "${args}". Here's some tags that you can use instead: ${possibleTags}`
+
+      return interaction.reply(
+        `No matching tag found for "${tag}". Here's some tags that you can use instead: ${possibleTags}`
       );
     }
 
-    const embed = new MessageEmbed();
+    const embed = new EmbedBuilder();
 
     embed.setDescription(tagToSend.response);
 
-    return message.channel.send(embed);
-  }
-}
+    return interaction.reply({ embeds: [embed] });
+  },
+};
 
 async function determineReply(textToSearch): Promise<ITag> {
   const tagToSend = tags

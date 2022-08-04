@@ -1,4 +1,4 @@
-import { Message, MessageAttachment } from "discord.js";
+import { Message, Attachment } from "discord.js";
 import { Detector } from "./base";
 import { createWorker, RecognizeResult, Worker } from "tesseract.js";
 
@@ -6,7 +6,9 @@ export default class ImageDetector extends Detector {
   worker: Worker;
 
   async detect(msg: Message): Promise<string[]> {
-    const detectedText = await this.getTextFromImages(msg.attachments.array());
+    const detectedText = await this.getTextFromImages(
+      Array.from(msg.attachments.values())
+    );
     // There's a bunch of interesting data here
     // Perhaps we can do something more with it later...
     // console.log(detectedText);
@@ -16,7 +18,7 @@ export default class ImageDetector extends Detector {
 
   async init(): Promise<void> {
     this.worker = createWorker({
-      logger: (m) => console.log(m),
+      logger: (m) => (process.env.LOG_TESSERACT ? console.log(m) : null),
     });
     await this.worker.load();
     await this.worker.loadLanguage("eng");
@@ -24,7 +26,7 @@ export default class ImageDetector extends Detector {
   }
 
   private async getTextFromImages(
-    attachments: MessageAttachment[]
+    attachments: Attachment[]
   ): Promise<RecognizeResult[]> {
     const promises: Promise<RecognizeResult>[] = [];
     for (const attachment of attachments) {

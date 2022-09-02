@@ -44,7 +44,9 @@ export default class Bot {
     this.client.on("messageCreate", (msg) => this.handleMessage(msg));
 
     this.client.on("interactionCreate", async (interaction) => {
+      console.log(`Received interaction ${interaction.id}`);
       if (!interaction.isChatInputCommand()) return;
+      console.log(`Interaction is: ${interaction.commandName}`);
 
       const command = commands.get(interaction.commandName);
       await command.handler(interaction);

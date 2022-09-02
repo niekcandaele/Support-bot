@@ -17,9 +17,7 @@ export default class ImageDetector extends Detector {
   }
 
   async init(): Promise<void> {
-    this.worker = createWorker({
-      logger: (m) => (process.env.LOG_TESSERACT ? console.log(m) : null),
-    });
+    this.worker = createWorker();
     await this.worker.load();
     await this.worker.loadLanguage("eng");
     await this.worker.initialize("eng");

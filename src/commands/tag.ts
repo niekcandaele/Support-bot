@@ -60,30 +60,6 @@ async function determineReply(textToSearch): Promise<ITag> {
     return tagToSend;
   }
 
-  // If no tags were found, we try to match with a command
-  const commands = await getCommands();
-
-  const commandToSend = commands.find((c) => {
-    return (
-      c.name.toLowerCase() === textToSearch.toLowerCase() ||
-      c.aliases.find((a) => a.toLowerCase() === textToSearch.toLowerCase())
-    );
-  });
-
-  if (commandToSend) {
-    const data: ITag = {
-      response: `
-            ${commandToSend.name}
-
-            ${commandToSend.description}
-
-            ${commandToSend.extendedDescription}`,
-      code: "",
-    };
-
-    return data;
-  }
-
   // Found nothing 😭
   return null;
 }

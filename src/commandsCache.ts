@@ -5,6 +5,7 @@ const cache = new NodeCache({ stdTTL: 360, checkperiod: 60 });
 
 export interface Command {
   name: string;
+  type: "csmm" | "7d2d";
   description: string;
   extendedDescription: string;
   aliases: string[];
@@ -26,6 +27,8 @@ export default async function getCommands(): Promise<Command[]> {
         _.aliases = _.aliases.split(",").map((_) => _.trim());
       }
 
+      _.type = "csmm";
+
       return _;
     }) as Command[];
 
@@ -37,7 +40,8 @@ export default async function getCommands(): Promise<Command[]> {
         name: _.command.split(",")[0],
         description: _.description,
         extendedDescription: _.help,
-        aliases: _.command.split(",").map((_) => _.trim()),
+        aliases: _.overloads,
+        type: "7d2d",
       };
     });
 

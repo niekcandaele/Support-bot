@@ -1,10 +1,11 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
 
+type SlashCommand = Omit<
+  SlashCommandBuilder,
+  "addSubcommand" | "addSubcommandGroup"
+>;
 export interface ICommand {
   name: string;
   handler(interaction: ChatInputCommandInteraction): Promise<unknown>;
-  slashCommand: Omit<
-    SlashCommandBuilder,
-    "addSubcommand" | "addSubcommandGroup"
-  >;
+  slashCommand: SlashCommand | (() => Promise<SlashCommand>);
 }

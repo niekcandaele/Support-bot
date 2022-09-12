@@ -34,11 +34,11 @@ export default class Bot {
   async start(): Promise<string> {
     await this.loadDetectors();
 
-    this.client.once("ready", () => {
+    this.client.once("ready", async () => {
       console.log(
         `Logged in as ${this.client.user.tag}! (${this.client.user.id})`
       );
-      this.deployCommands();
+      await this.deployCommands();
     });
 
     this.client.on("messageCreate", (msg) => this.handleMessage(msg));
@@ -65,14 +65,25 @@ export default class Bot {
   }
 
   private async deployCommands() {
-    return this.rest
-      .put(Routes.applicationCommands(this.clientId), {
-        body: Array.from(commands.values()).map((command) =>
-          command.slashCommand.toJSON()
+    try {
+      await this.rest.put(Routes.applicationCommands(this.clientId), {
+        body: await Promise.all(
+          Array.from(commands.values()).map(async (command) => {
+            if (command.slashCommand instanceof Function) {
+              return await command.slashCommand();
+            }
+
+            return command.slashCommand.toJSON();
+          })
         ),
-      })
-      .then(() => console.log("Successfully registered application commands."))
-      .catch(console.error);
+      });
+      console.log("Successfully registered application commands.");
+    } catch (error) {
+      // Discord.js validation does some special stuff with how they show errors
+      // This is to make sure the error message is fully logged
+      console.error(error);
+      throw error();
+    }
   }
 
   private async handleMessage(message: Message) {

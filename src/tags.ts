@@ -138,4 +138,17 @@ export const tags: Tag[] = [
       "If you are using a Steam ID in your command, note that it must be in the format Steam_71234567890123456. The capital S on Steam is important.",
     code: "steamid",
   },
+  {
+    trigger: /EADDRINUSE/,
+    response: `Hi there,
+
+    It seems like you are encountering an \`EADDRINUSE\` error when trying to run CSMM. This error occurs when the port CSMM is trying to use is already occupied by another process. Here's how you can resolve this:
+    
+    1. **Check for Processes Using the Port**: First, you need to check if any other process is using the port CSMM is trying to run on. If you are on Linux, use the command \`sudo ss -tlpn\` to get a list of everything that has a port open.
+    
+    2. **Change the Port or Terminate the Existing Process**: Once you identify the process using the port, you can either terminate it or change the port that CSMM uses. To change the port, you can use the environment variable by editing the \`.env\` file ([see example](https://github.com/CatalysmsServerManager/7-days-to-die-server-manager/blob/master/.env.example.docker#L3)) or with Docker, using the Docker port forwarding options.
+    
+    3. **Restart CSMM**: After making these changes, try restarting CSMM and see if the issue is resolved.
+    `,
+  },
 ];

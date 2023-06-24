@@ -89,8 +89,20 @@ export const tags: Tag[] = [
     trigger: /CSMM could not execute the 'mem' command on your server./,
   },
   {
-    response:
-      "[Info on all benefits](https://www.csmm.app/donate.html)\n\nMake sure you link your Discord profile to CSMM [[EU](https://eu.csmm.app/auth/discord) [US](https://us.csmm.app/auth/discord) [AU](https://au.csmm.app/auth/discord)] and [to Patreon](https://support.patreon.com/hc/en-us/articles/212052266-Get-my-Discord-role) after donating\nIt could take up to 5-10 minutes for the sync to occur. If after this time you still don't have a Discord role, try linking Discord on CSMM *again*.",
+    response: `
+
+    There are two ways to use CSMM:
+    
+    - **Self Hosting**: Self hosting CSMM is free, but requires some solid technical know-how to get running. [More info](https://docs.csmm.app/en/CSMM/self-host/installation.html)
+    
+    - **Paid Hosting**: Alternatively, you can pay a monthly fee to use the hosted instances of CSMM, which will get you started quicker than self-hosting. See the 'plans' section [here](https://csmm.app/).
+
+    [Info on all benefits](https://www.csmm.app/donate.html)
+    
+    Make sure you link your Discord profile to CSMM [[EU](https://eu.csmm.app/auth/discord) [US](https://us.csmm.app/auth/discord) [AU](https://au.csmm.app/auth/discord)] and [to Patreon](https://support.patreon.com/hc/en-us/articles/212052266-Get-my-Discord-role) after donating.
+    It could take up to 5-10 minutes for the sync to occur. If after this time you still don't have a Discord role, try linking Discord on CSMM *again*.
+    
+    `,
     code: "donate",
   },
   {
@@ -150,5 +162,13 @@ export const tags: Tag[] = [
     
     3. **Restart CSMM**: After making these changes, try restarting CSMM and see if the issue is resolved.
     `,
+  },
+  {
+    code: "7d2d.net",
+    response: `Hello! It seems that you are referring to csmm.7d2d.net. 
+    
+    Please be informed that this site is not hosted or managed by the CSMM team and instead is managed by a third party. 
+    We cannot provide support or troubleshooting for this site.
+    As an alternative, you can use the instances managed by The CSMM team: [[EU](https://eu.csmm.app/auth/discord) [US](https://us.csmm.app/auth/discord) [AU](https://au.csmm.app/auth/discord)]`,
   },
 ];

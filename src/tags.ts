@@ -42,8 +42,23 @@ export const tags: Tag[] = [
         Make sure the \`CSMM_ADMINS\` env variable is uncommented and contains your Steam ID.`,
   },
   {
-    response:
-      "To generate and reveal your entire map on CSMM, you can use the vanilla `visitmap` command. This command will simulate a player walking along your entire map. \nThe general formula is \n`visitmap -halfmapsize -halfmapsize halfmapsize halfmapsize`\n\nFor example, on an 8K map:\n`visitmap -4096 -4096 4096 4096`\n\nNote that this can take pretty long and is quite CPU intensive.",
+    response: `To generate and reveal your entire map on CSMM, you can use the vanilla \`visitmap\` command. This command will simulate a player walking along your entire map. 
+
+    The general formula is 
+    \`visitmap -halfmapsize -halfmapsize halfmapsize halfmapsize\`
+    
+    For example:
+    
+    On a 6K map:
+    \`visitmap -3072 -3072 3072 3072\`
+    
+    On an 8K map:
+    \`visitmap -4096 -4096 4096 4096\`
+    
+    On a 10K map:
+    \`visitmap -5120 -5120 5120 5120\`
+    
+    Note that this can take pretty long and is quite CPU intensive.`,
     code: "visitmap",
   },
   {

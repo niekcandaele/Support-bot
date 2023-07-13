@@ -186,4 +186,38 @@ export const tags: Tag[] = [
     We cannot provide support or troubleshooting for this site.
     As an alternative, you can use the instances managed by The CSMM team: [[EU](https://eu.csmm.app/auth/discord) [US](https://us.csmm.app/auth/discord) [AU](https://au.csmm.app/auth/discord)]`,
   },
+  {
+    code: "codeblocks",
+    response: `Hello! To format your code or command inputs, you can use code blocks in Discord. They help improve readability and highlight syntax. Here's how to use them:
+  
+    For inline code or commands, you can wrap your text with single backticks (\\\`):
+  
+\`\`\`
+\`your code here\`
+\`\`\`
+  
+    The output will look something like this: \`your code here\`.
+  
+    If you want to share multiple lines of code or command inputs, you can use triple backticks (\\\`\\\`\\\`):
+  
+    \\\`\\\`\\\`
+    line 1 of your code
+    line 2 of your code
+    line 3 of your code
+    \\\`\\\`\\\`
+  
+    The output will then display your text in a distinct code block. Remember to close your code blocks with a corresponding set of backticks!`,
+  },
+  {
+    code: "screenshot",
+    response: `Hello! To take a proper screenshot, you can use the built-in tools provided by your operating system:
+  
+**For Windows:**
+**Snipping Tool:** This is a built-in application where you can take screenshots of a specific area, a window, or the entire screen.
+- Open the Snipping Tool application (Windows key + shift + s).
+- Select the area you want to screenshot.
+- Paste the screenshot into Discord.
+  
+    When sharing your screenshot, make sure it clearly shows the issue or feature you're trying to highlight. You might want to use an image editor to add annotations or blur out sensitive information.`,
+  },
 ];

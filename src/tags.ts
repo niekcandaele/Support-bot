@@ -62,8 +62,19 @@ export const tags: Tag[] = [
     code: "visitmap",
   },
   {
-    response:
-      "To find the port of the Allocs Fixes webserver, there are 2 options\n\n- Via logs\nIn the output log of your server, find a line like `2018-09-15T01:27:41 61.339 INF Started Webserver on 8090`. 8090 is your port value\n\n- Via serverconfig.xml\nThe port is defined as ControlPanelPort +2. Find that value and in your browser go to http://<yourserverip>:<value>. If you see the Allocs webmap, you've found the correct port!\nPlease note that if you are using a hosting provider, the port in your serverconfig.xml may be remapped and thus the value you get may not be correct\n\n",
+    response: `To find the port of the Allocs Fixes webserver, there are 2 options:
+  
+    - Via logs
+    In the output log of your server, find a line like "2018-09-15T01:27:41 61.339 INF Started Webserver on 8090". 8090 is your port value
+  
+    - Via serverconfig.xml
+    The port is defined as WebDashboardPort +2. Find that value and in your browser go to http://<yourserverip>:<value>. If you see the Allocs webmap, you've found the correct port!
+  
+    Please note that if you are using a hosting provider, the port in your serverconfig.xml may be remapped and thus the value you get may not be correct.
+  
+    ---
+
+    If you have updated to Mod Allocs MapRendering and Webinterface 43 or later, the port is now 2 less than it used to be due to changes in the mod. So if your old port was, for example, 8090, your new port will now be 8088. The new port is the same as the new web dashboard.`,
     code: "port",
     trigger: /CSMM tried to send a GET request to/,
   },
@@ -89,11 +100,6 @@ export const tags: Tag[] = [
   },
   {
     response:
-      "A new experimental feature to get around maps being on http, while csmm being https. To enable goto your server(s) settings page, then scroll to the experimental section at the bottom. Check the checkbox and hit save",
-    code: "mapProxy",
-  },
-  {
-    response:
       "- Is Alloc's server fixes installed?\n - [Is it the correct version for your server?](https://7dtd.illy.bz/wiki/Server%20fixes#a7DaystoDievsModversioncompatibility) Ex A18 or A19. \n - Are you self hosting your 7D2D server? If yes, [is your control panel port +2 forwarded in your firewall?](https://canyouseeme.org/). Default port for this is 8082\n- If you are renting, does your host have the port forwarded and what is the port they have assigned to you?\n- Have you created your webtoken? [Video](https://youtu.be/N2LzCQ-5u-0)\n  `webtokens_legacy add tokenname tokenpassword 0` \nminimun 10 character password\n\n\n    ",
     code: "checklist",
   },
@@ -115,10 +121,13 @@ export const tags: Tag[] = [
     [Info on all benefits](https://www.csmm.app/donate.html)
     
     Make sure you link your Discord profile to CSMM [[EU](https://eu.csmm.app/auth/discord) [US](https://us.csmm.app/auth/discord) [AU](https://au.csmm.app/auth/discord)] and [to Patreon](https://support.patreon.com/hc/en-us/articles/212052266-Get-my-Discord-role) after donating.
+    _Note_: Since the Discord username change, you might need to link your Discord profile to Patreon again!
     It could take up to 5-10 minutes for the sync to occur. If after this time you still don't have a Discord role, try linking Discord on CSMM *again*.
     
     `,
     code: "donate",
+    trigger:
+      /This instance is reserved for donators, please use a public instance instead/,
   },
   {
     response:
@@ -134,13 +143,6 @@ export const tags: Tag[] = [
     response:
       "If you are using a rented server, be aware that a lot of providers block .dll uploads! It's possible you copied the CPM files but the .dlls never got transfered. \n\nMake sure there are .dll files inside the `1CSMM_Patrons` folder. If there is not, you will have to create a ticket with your hosting provider and ask to install CPM.",
     code: "dllblock",
-  },
-  {
-    response:
-      "The public instances are donator only.\n\nIf you wish to continue to use the public instances, you will have to register for a paid plan via [Patreon](https://www.patreon.com/catalysm).\n\nIf you wish to continue to use CSMM for free, you can install it on your own server. [Docs](https://docs.csmm.app/en/CSMM/self-host/installation.html) \n\n --- \n\n If you have already donated and are still getting this message, please check and make sure your Discord account is connected to Patreon and to CSMM. You can check your donator status on your profile page on CSMM.",
-    code: "publicinstance",
-    trigger:
-      /This instance is reserved for donators, please use a public instance instead/,
   },
   {
     response: `CSMM Patron's Mod (CPM) is a companion mod to CSMM maintained by Prisma. Its free to use and can be used without CSMM. CPM is a forked extension of Coppi's Mod (used and continued under a new name with permission of original author Danilo Coppi), extending the functionality of existing commands, and adding new commands and features. CPM adds loads of new features to your server. These features include both console commands, as well as chat commands. Use it to extend the possibilities of what you can do with CSMM.

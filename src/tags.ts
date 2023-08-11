@@ -234,13 +234,16 @@ export const tags: Tag[] = [
        - Change the port to 2 numbers lower than before. So, if it was 8082, now it should be 8080.
 
     2. **CSMM Web Interface - Regenerating Web Tokens**:
-       - While still in \`Basic server settings\` of the CSMM web interface.
-       - Look for the section or option to regenerate web tokens.
+       - Open a command console (Ingame F1 console or Telnet)
        - Run:
     \`webtokens add <name> <password> 0\`
 
     Replace \`<name>\` and \`<password>\` with your desired values.
 
+      - Go to \`Settings\` > \`Basic server settings\`.
+      - Configure your newly generated web token in CSMM
+      - Save your settings.
+      
     Try these out and shout if things are still a bit wobbly!`,
   },
 ];

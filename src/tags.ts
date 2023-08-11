@@ -224,18 +224,23 @@ export const tags: Tag[] = [
   },
   {
     code: "allocs-legacy",
-    response: `Hey there! 👋
+    response: `Hey! 👋
 
-    Looks like you might be having some issues after the recent Alloc's fixes update. Here's the lowdown:
-    
-        Port Update: The port's changed. Use the port that's 2 numbers lower than what you were using. For many, it's now 8080, as set in the serverconfig.
-    
-        Web Tokens: Dashboard acting up? Regenerate your web tokens with this command:
-    
-        \`webtokens add <name> <password> 0\`
-    
-        Replace <name> and <password> with your own values.
-    
-    That should sort most issues. Let us know if you need more help!`,
+    Ran into some hiccups after the Alloc's update? Let's sort it out:
+
+    1. **CSMM Web Interface - Port Change**: 
+       - Head to your CSMM web interface.
+       - Go to \`Settings\` > \`Basic server settings\`.
+       - Change the port to 2 numbers lower than before. So, if it was 8082, now it should be 8080.
+
+    2. **CSMM Web Interface - Regenerating Web Tokens**:
+       - While still in \`Basic server settings\` of the CSMM web interface.
+       - Look for the section or option to regenerate web tokens.
+       - Run:
+    \`webtokens add <name> <password> 0\`
+
+    Replace \`<name>\` and \`<password>\` with your desired values.
+
+    Try these out and shout if things are still a bit wobbly!`,
   },
 ];

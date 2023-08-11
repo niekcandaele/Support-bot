@@ -224,9 +224,7 @@ export const tags: Tag[] = [
   },
   {
     code: "allocs-legacy",
-    response: `**Bot Response for Issues after Alloc's Update:**
-
-    Hey! 👋
+    response: `Hey! 👋
 
     Ran into some hiccups after the Alloc's update? Let's sort it out:
 

@@ -222,4 +222,20 @@ export const tags: Tag[] = [
   
     When sharing your screenshot, make sure it clearly shows the issue or feature you're trying to highlight. You might want to use an image editor to add annotations or blur out sensitive information.`,
   },
+  {
+    code: "allocs-legacy",
+    response: `Hey there! 👋
+
+    Looks like you might be having some issues after the recent Alloc's fixes update. Here's the lowdown:
+    
+        Port Update: The port's changed. Use the port that's 2 numbers lower than what you were using. For many, it's now 8080, as set in the serverconfig.
+    
+        Web Tokens: Dashboard acting up? Regenerate your web tokens with this command:
+    
+        \`webtokens add <name> <password> 0\`
+    
+        Replace <name> and <password> with your own values.
+    
+    That should sort most issues. Let us know if you need more help!`,
+  },
 ];

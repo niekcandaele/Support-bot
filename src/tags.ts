@@ -62,19 +62,15 @@ export const tags: Tag[] = [
     code: "visitmap",
   },
   {
-    response: `To find the port of the Allocs Fixes webserver, there are 2 options:
+    response: `To find the port of the webserver, there are 2 options:
   
     - Via logs
     In the output log of your server, find a line like "2018-09-15T01:27:41 61.339 INF Started Webserver on 8090". 8090 is your port value
   
     - Via serverconfig.xml
-    The port is defined as WebDashboardPort +2. Find that value and in your browser go to http://<yourserverip>:<value>. If you see the Allocs webmap, you've found the correct port!
+    The port is defined as WebDashboardPort. Find that value and in your browser go to http://<yourserverip>:<value>. If you see the web dashboard, you've found the correct port!
   
-    Please note that if you are using a hosting provider, the port in your serverconfig.xml may be remapped and thus the value you get may not be correct.
-  
-    ---
-
-    If you have updated to Mod Allocs MapRendering and Webinterface 43 or later, the port is now 2 less than it used to be due to changes in the mod. So if your old port was, for example, 8090, your new port will now be 8088. The new port is the same as the new web dashboard.`,
+    Please note that if you are using a hosting provider, the port in your serverconfig.xml may be remapped and thus the value you get may not be correct.`,
     code: "port",
     trigger: /CSMM tried to send a GET request to/,
   },
@@ -234,12 +230,15 @@ export const tags: Tag[] = [
        - Change the port to 2 numbers lower than before. So, if it was 8082, now it should be 8080.
 
     2. **CSMM Web Interface - Regenerating Web Tokens**:
-       - While still in \`Basic server settings\` of the CSMM web interface.
-       - Look for the section or option to regenerate web tokens.
+       - Open a command console (Ingame F1 console or Telnet)
        - Run:
     \`webtokens add <name> <password> 0\`
 
     Replace \`<name>\` and \`<password>\` with your desired values.
+
+      - Go to \`Settings\` > \`Basic server settings\`.
+      - Configure your newly generated web token in CSMM
+      - Save your settings.
 
     Try these out and shout if things are still a bit wobbly!`,
   },

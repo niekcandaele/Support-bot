@@ -100,12 +100,12 @@ export const tags: Tag[] = [
   },
   {
     response:
-      "- Is Alloc's server fixes installed?\n - [Is it the correct version for your server?](https://7dtd.illy.bz/wiki/Server%20fixes#a7DaystoDievsModversioncompatibility) Ex A18 or A19. \n - Are you self hosting your 7D2D server? If yes, [is your control panel port +2 forwarded in your firewall?](https://canyouseeme.org/). Default port for this is 8082\n- If you are renting, does your host have the port forwarded and what is the port they have assigned to you?\n- Have you created your webtoken? [Video](https://youtu.be/N2LzCQ-5u-0)\n  `webtokens_legacy add tokenname tokenpassword 0` \nminimun 10 character password\n\n\n    ",
+      "- Is Alloc's server fixes installed?\n - [Is it the correct version for your server?](https://7dtd.illy.bz/wiki/Server%20fixes#a7DaystoDievsModversioncompatibility) Ex A18 or A19. \n - Are you self hosting your 7D2D server? If yes, [is your control panel port +2 forwarded in your firewall?](https://canyouseeme.org/). Default port for this is 8082\n- If you are renting, does your host have the port forwarded and what is the port they have assigned to you?\n- Have you created your webtoken? [Video](https://youtu.be/N2LzCQ-5u-0)\n  `webtokens add tokenname tokenpassword 0` \nminimun 10 character password\n\n\n    ",
     code: "checklist",
   },
   {
     response:
-      "In order for CSMM to be able to communicate with your server, you have to set up authentication info on your server.\nThe easiest way to do this is with the `webtokens_legacy` command inside your telnet/ingame command console. Please choose a strong and random token. If someone guesses this token, he/she will get FULL access to your server console and will be able to execute ANY command.\n\n[Generated random code](https://www.random.org/strings/?num=10&len=20&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new)\n\nExample: `webtokens_legacy add <name> <token> 0`\n[More info](https://docs.csmm.app/en/CSMM/installation.html#set-up-web-api-credentials) ",
+      "In order for CSMM to be able to communicate with your server, you have to set up authentication info on your server.\nThe easiest way to do this is with the `webtokens` command inside your telnet/ingame command console. Please choose a strong and random token. If someone guesses this token, he/she will get FULL access to your server console and will be able to execute ANY command.\n\n[Generated random code](https://www.random.org/strings/?num=10&len=20&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new)\n\nExample: `webtokens add <name> <token> 0`\n[More info](https://docs.csmm.app/en/CSMM/installation.html#set-up-web-api-credentials) ",
     code: "webtokens",
     trigger: /CSMM could not execute the 'mem' command on your server./,
   },

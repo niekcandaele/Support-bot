@@ -222,7 +222,7 @@ export const tags: Tag[] = [
     code: "allocs-legacy",
     response: `Hey! 👋
 
-    Ran into some hiccups after the Alloc's update? Let's sort it out:
+    Ran into some hiccups after the Alloc's update? In order to get CSMM working again, you need to do the following:
 
     1. **CSMM Web Interface - Port Change**: 
        - Head to your CSMM web interface.
@@ -240,6 +240,8 @@ export const tags: Tag[] = [
       - Configure your newly generated web token in CSMM
       - Save your settings.
 
+    For more info, see the [release notes of Allocs fixes](https://7dtd.illy.bz/wiki/Server%20fixes%20Release%20Notes#rev.45625_30_452023-08-11) 
+      
     Try these out and shout if things are still a bit wobbly!`,
   },
 ];

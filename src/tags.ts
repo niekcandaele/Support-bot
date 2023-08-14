@@ -240,7 +240,7 @@ export const tags: Tag[] = [
       - Configure your newly generated web token in CSMM
       - Save your settings.
 
-    For more info, see the [release notes of Allocs fixes](https://7dtd.illy.bz/wiki/Server%20fixes%20Release%20Notes#rev.45625_30_452023-08-11) 
+    For more detailed info, see [this Google doc](https://docs.google.com/document/d/1YndlS5Z8Ci3-t4BekdC6mT8-OQ-33RMy2PEXHpcAE_k/edit)
       
     Try these out and shout if things are still a bit wobbly!`,
   },

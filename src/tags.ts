@@ -178,11 +178,13 @@ export const tags: Tag[] = [
   },
   {
     code: "7d2d.net",
-    response: `Hello! It seems that you are referring to csmm.7d2d.net. 
-    
-    Please be informed that this site is not hosted or managed by the CSMM team and instead is managed by a third party. 
-    We cannot provide support or troubleshooting for this site.
-    As an alternative, you can use the instances managed by The CSMM team: [[EU](https://eu.csmm.app/auth/discord) [US](https://us.csmm.app/auth/discord) [AU](https://au.csmm.app/auth/discord)]`,
+    response: `Hey there! I noticed you mentioned csmm.7d2d.net.
+  
+    Just a heads-up: this particular site isn't hosted or maintained by our CSMM team. It's managed by a third party. While we're flattered they've included CSMM in their offering (CSMM is open source, so they're absolutely allowed to do that), sometimes they might not be on the latest version, which could lead to bugs or configuration issues unique to their platform.
+  
+    We really want to help, but for the best assistance on that site, you'd be better off reaching out to 7d2d.net directly. However, if you ever decide to use the official CSMM instances, we're here to support you 100%! Check them out here: [EU](https://eu.csmm.app) [US](https://us.csmm.app) [AU](https://au.csmm.app).
+  
+    Thanks for understanding and supporting CSMM!`,
   },
   {
     code: "codeblocks",

@@ -44,6 +44,8 @@ export const tags: Tag[] = [
   {
     response: `To generate and reveal your entire map on CSMM, you can use the vanilla \`visitmap\` command. This command will simulate a player walking along your entire map. 
 
+    Starting from 21.2 b30, you can use \`visitmap full\`
+
     Before using the \`visitmap\` command, ensure that the 'EnableMapRendering' is set to true in your server settings xml. The setting might look something like:
     \`<property name="EnableMapRendering" value="true"/>\`
 

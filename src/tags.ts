@@ -122,8 +122,7 @@ export const tags: Tag[] = [
     [Info on all benefits](https://www.csmm.app/donate.html)
     
     Make sure you link your Discord profile to CSMM [[EU](https://eu.csmm.app/auth/discord) [US](https://us.csmm.app/auth/discord) [AU](https://au.csmm.app/auth/discord)] and [to Patreon](https://support.patreon.com/hc/en-us/articles/212052266-Get-my-Discord-role) after donating.
-    _Note_: Since the Discord username change, you might need to link your Discord profile to Patreon again!
-    It could take up to 5-10 minutes for the sync to occur. If after this time you still don't have a Discord role, try linking Discord on CSMM *again*.
+    If the role does not update, go into Patreon and find the button to join this Discord. Click it, that will trigger their bot to give the role.
     
     `,
     code: "donate",

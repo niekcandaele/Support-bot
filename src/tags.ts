@@ -250,4 +250,20 @@ export const tags: Tag[] = [
       
     Try these out and shout if things are still a bit wobbly!`,
   },
+  {
+    code: "ratelimit",
+    response: `It's possible you are getting rate limited. CSMM processes events from your server, but some servers send thousands of messages per second (e.g., a bugged vehicle). In order to prevent getting overloaded, CSMM will disconnect itself temporarily and then reconnect every x time to see if the avalanche of data has stopped.
+
+**Symptoms:**
+- Events not coming through
+- Chat relay not working
+- Intermittent disconnections
+
+**Solutions:**
+1. Check for bugged vehicles or other sources of excessive events on your server
+2. Enable Discord notifications for rate limiting to monitor when this happens
+3. Try toggling CSMM Features off and back on again (see \`/tag toggle\`)
+
+Note: Takaro handles high data volumes better and doesn't have the same rate limiting issues. The 'events not coming through' is a common symptom of rate limiting.`,
+  },
 ];
